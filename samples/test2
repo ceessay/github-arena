@@ -1,0 +1,84 @@
+
+var USER_DATA = [
+    {
+        name: 'Mohamed CISSE',
+        username: 'ceessay',
+        img: 'https://avatars1.githubusercontent.com/u/15385670?v=3&s=460'
+    },
+    {
+        name: 'Kamran AHMAD',
+        username: 'kamranahmedse',
+        img: 'https://avatars1.githubusercontent.com/u/4921183?v=3&s=460'
+    },
+    {
+        name: 'David EAST',
+        username: 'ceessay',
+        img: 'https://avatars3.githubusercontent.com/u/4570265?v=3&s=460'
+    }
+]
+
+class Avatar extends React.Component {
+    render() {
+        return (<img src={this.props.img} />)
+    }
+}
+
+class Label extends React.Component {
+    render() {
+        return (<h1> Name: {this.props.name}</h1>)
+    }
+}
+
+class ScreenName extends React.Component {
+    render() {
+        return (<h1> Username: {this.props.username}</h1>)
+    }
+}
+
+
+
+class Users extends React.Component {
+    render() {
+        console.log(this.props)
+        return (
+            <ul>
+                {
+                    this.props.list.map(function (item) {
+                        return (
+                            <div>
+                                <Badge user={item} />
+                                <hr />
+                                <br />
+                                <br />
+                            </div>
+
+                        )
+                    })
+                }
+
+            </ul>
+        )
+    }
+}
+
+
+class Badge extends React.Component {
+    render() {
+        console.log(this.props)
+        return (
+            <div>
+                <Avatar img={this.props.user.img} />
+                <Label name={this.props.user.name} />
+                <ScreenName username={this.props.user.username} />
+            </div>
+        )
+    }
+}
+
+
+ReactDOM.render(
+    <Users
+        list={USER_DATA} />,
+    document.getElementById('app')
+
+)
